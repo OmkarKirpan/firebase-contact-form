@@ -17,15 +17,20 @@ firebase.initializeApp(config);
 export const firestore = firebase.firestore();
 
 export const submitContact = contactData => {
-  const { name, email, subject, comment } = contactData;
+  const {
+    contactName,
+    contactEmail,
+    contactSubject,
+    contactComment
+  } = contactData;
   const collectionRef = firestore.collection("messages");
   console.log(contactData);
   collectionRef
     .add({
-      name,
-      email,
-      subject,
-      comment
+      name: contactName,
+      email: contactEmail,
+      subject: contactSubject,
+      comment: contactComment
     })
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
